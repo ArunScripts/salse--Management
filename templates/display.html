@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block extra_css %}
+<style>
+  .button {
+            display: inline-block;
+            padding: 5px 9px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: yellow;
+            background-color: green;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px  red;
+        }
+
+</style>
+{% endblock %}
+
+{% block content %}
+<table class="table">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">coordinator</th>
+      <th scope="col">date of  join</th>
+      <th scope="col">name</th>
+      <th scope="col">email</th>
+      <th scope="col">age</th>
+      <th scope="col">place</th>
+      <th scope="col">education</th>
+      <th scope="col">skills</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for student in studentdata %}
+    <tr>
+      <td>{{ student.id }}</td>
+      <td>{{ student.salse_person.username }}</td>
+      <td>{{ student.date_of_join }}</td>
+      <td>{{ student.name }}</td>
+      <td>{{ student.email }}</td>
+      <td>{{ student.age }}</td>
+      <td>{{ student.place }}</td>
+      <td>{{ student.education }}</td>
+      <td>{{ student.skills }}</td>
+
+      <td><a href="{% url 'update' student.id %}" class="button">update</a></td>
+      <td><a href="{% url 'delete' student.id %}" class="button" style="background-color:red">delete</a></td>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

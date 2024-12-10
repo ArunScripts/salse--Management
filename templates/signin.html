@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+</head>
+<body>
+    <h1>Welcome to My signin page</h1>
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>Name:</th>
+                <td><input type="text" placeholder="enter your name" name="signinname"></td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td><input type="email" placeholder="enter your email" name="signinemail"></td>
+            </tr>
+            <tr>
+                <th>Password:</th>
+                <td><input type="password" placeholder="enter your password" name="signinpsw"></td>
+            </tr>
+
+
+            <tr>
+                <td><input type="submit" ></td>
+                 <td><a href="/">login page</a></td>
+            </tr>
+
+            <tr>
+                {% if message %}
+                <td></td>
+                 <td>
+                     <h4 style="color:red">User or email already exist!</h4>
+                 </td>
+                {% endif %}
+            </tr>
+
+
+        </table>
+    </form>
+
+</body>
+</html>
